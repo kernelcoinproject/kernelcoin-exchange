@@ -2,6 +2,7 @@
 Lets encourage some trading
 
 ## Screenshots
+<img width="1204" height="869" alt="Screenshot 2025-11-21 at 4 15 09 AM" src="https://github.com/user-attachments/assets/12bbfaeb-e341-4ee8-bc25-d87becd66e48" />
 
 ## Basic Setup
 
