@@ -48,8 +48,13 @@ sudo yum install -y fuse
 wget https://electrum-ltc.org/download/electrum-ltc-4.2.2.1-x86_64.AppImage
 chmod +x electrum-ltc-4.2.2.1-x86_64.AppImage
 ./electrum-ltc-4.2.2.1-x86_64.AppImage daemon
+```
+```
 ./electrum-ltc-4.2.2.1-x86_64.AppImage getinfo
 ./electrum-ltc-4.2.2.1-x86_64.AppImage create
+```
+write the generated wallet down
+```
 ./electrum-ltc-4.2.2.1-x86_64.AppImage load_wallet
 ./electrum-ltc-4.2.2.1-x86_64.AppImage createnewaddress
 ```
@@ -63,6 +68,7 @@ git clone https://github.com/kernelcoinproject/kernelcoin-exchange.git
 cd kernelcoin-exchange
 go mod tidy
 cat > start.sh << EOF
+/home/ec2-user/electrum-ltc-4.2.2.1-x86_64.AppImage load_wallet
 go run *.go -electrum-binary=/home/ec2-user/electrum-ltc-4.2.2.1-x86_64.AppImage
 EOF
 chmod +x start.sh
