@@ -57,10 +57,10 @@ chmod +x electrum-ltc-4.2.2.1-x86_64.AppImage
 2. Download and run the kernelcoin exchange
 
 ```
+sudo yum install -y git golang
 cd ~
 git clone https://github.com/kernelcoinproject/kernelcoin-exchange.git
 cd kernelcoin-exchange
-yum install -y golang
 go mod tidy
 cat > start.sh << EOF
 go run *.go -electrum-binary=/home/ec2-user/electrum-ltc-4.2.2.1-x86_64.AppImage
