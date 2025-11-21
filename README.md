@@ -68,6 +68,7 @@ git clone https://github.com/kernelcoinproject/kernelcoin-exchange.git
 cd kernelcoin-exchange
 go mod tidy
 cat > start.sh << EOF
+sleep 5
 /home/ec2-user/electrum-ltc-4.2.2.1-x86_64.AppImage load_wallet
 go run *.go -electrum-binary=/home/ec2-user/electrum-ltc-4.2.2.1-x86_64.AppImage
 EOF
