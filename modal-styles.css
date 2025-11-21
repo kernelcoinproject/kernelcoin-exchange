@@ -1,0 +1,37 @@
+.btn-confirm {
+    background: linear-gradient(135deg, #00d966 0%, #00a84d 100%) !important;
+    color: #000 !important;
+    padding: 0.75rem 1.5rem !important;
+    font-size: 1rem !important;
+    border: none !important;
+    border-radius: 6px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-cancel {
+    background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%) !important;
+    color: #fff !important;
+    padding: 0.75rem 1.5rem !important;
+    font-size: 1rem !important;
+    border: none !important;
+    border-radius: 6px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-confirm:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 20px rgba(0, 217, 102, 0.3) !important;
+}
+
+.btn-cancel:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 20px rgba(255, 68, 68, 0.3) !important;
+}
+
+.modal-warning {
+    margin-top: 1.5rem !important;
+}

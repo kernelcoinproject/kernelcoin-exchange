@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kernelcoin Exchange</title>
+    <link href="https://cdn.datatables.net/2.3.5/css/dataTables.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link href="captcha.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/2.3.5/js/dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo">
+                <i class="fas fa-coins"></i>
+                Kernelcoin Exchange
+            </a>
+            <nav id="mainNav">
+                <button class="tab-switch" data-tab="exchange">Order Book</button>
+                <button class="tab-switch" data-tab="trades">Trades</button>
+                <button class="tab-switch" data-tab="balances">Transact</button>
+                <button class="tab-switch" data-tab="wallet">Account</button>
+                <button class="tab-switch" data-tab="admin" id="adminTabBtn" style="display:none;">Admin</button>
+            </nav>
+            <div class="user-info">
+                <span id="currentUser">Not logged in</span>
+                <button id="logoutBtn" class="btn btn-danger hidden logout-btn">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container" id="tabContainer">
+        <!-- Tabs will be loaded dynamically here -->
+    </div>
+
+    <!-- Execution Modal -->
+    <div id="executionModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Confirm Trade</h2>
+                <button class="modal-close" onclick="document.getElementById('executionModal').classList.remove('active')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-warning">
+                    <strong>⚠️ Warning:</strong> You are trading with another user. Please verify the amounts and price before confirming.
+                </div>
+                <p id="modalMessage" class="modal-message"></p>
+                <div class="modal-info-box">
+                    <div class="modal-info-label">Amount</div>
+                    <div id="modalAmount" class="modal-info-value"></div>
+                </div>
+                <div class="modal-info-box">
+                    <div class="modal-info-label">Price</div>
+                    <div id="modalPrice" class="modal-info-value"></div>
+                </div>
+                <div class="modal-info-grid">
+                    <div class="modal-info-box">
+                        <div class="modal-info-label">USD Value</div>
+                        <div id="modalTotalUsd" class="modal-info-value"></div>
+                    </div>
+                    <div class="modal-info-box">
+                        <div class="modal-info-label">Price/Coin</div>
+                        <div id="modalPricePerCoin" class="modal-info-value"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" onclick="cancelExecution()" id="cancelBtn">Cancel</button>
+                <button class="btn btn-success" onclick="confirmExecution()" id="confirmBtn">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="captcha.js"></script>
+    <script src="confetti.js"></script>
+    <script src="tabs.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<div id="my-trades" class="tab-content">
+    <div class="hero">
+        <h1>My Trades</h1>
+        <p>Manage your active and completed trades</p>
+    </div>
+
+    <div class="balance-card">
+        <div class="balance-item">
+            <div class="balance-label">Your Litecoin Balance</div>
+            <div class="balance-value">
+                <i class="fas fa-coins"></i>
+                <span id="myLtcBalance2">0.00000000</span> LTC
+            </div>
+        </div>
+        <div class="balance-item">
+            <div class="balance-label">Your Kernelcoin Balance</div>
+            <div class="balance-value">
+                <i class="fas fa-coins"></i>
+                <span id="myKcnBalance2">0.00000000</span> KCN
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 class="card-title">Create Listing</h2>
+        <form id="createTradeForm">
+            <div class="form-group">
+                <label>Trade Type</label>
+                <select id="tradeType" required>
+                    <option value="buy">Buy KCN with LTC</option>
+                    <option value="sell">Sell KCN for LTC</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Amount of KCN</label>
+                <input type="number" id="tradeAmount" step="0.00000001" required>
+            </div>
+            <div class="form-group">
+                <label>Amount of LTC</label>
+                <input type="number" id="tradeLtcAmount" step="0.00000001" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Create Listing</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h2 class="card-title">My Active Trades</h2>
+        <div class="table-container">
+            <table id="myTradesTable" class="display">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Selling</th>
+                        <th>Amount</th>
+                        <th>Buying</th>
+                        <th>For</th>
+                        <th>Price/Unit</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>

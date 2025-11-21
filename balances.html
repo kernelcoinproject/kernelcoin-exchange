@@ -1,0 +1,113 @@
+<div id="balances" class="tab-content">
+    <div class="balance-card" style="grid-template-columns: 1fr 1fr 1fr;">
+        <div class="balance-item">
+            <div class="balance-label">Litecoin Balance</div>
+            <div class="balance-value"><i class="fas fa-coin"></i><span id="myLtcBalance">0.00000000</span></div>
+            <div class="balance-label" style="margin-top: 0.5rem; font-size: 0.8rem;">Reserved: <span id="myLtcReserved">0.00000000</span></div>
+        </div>
+        <div class="balance-item">
+            <div class="balance-label">Kernelcoin Balance</div>
+            <div class="balance-value"><i class="fas fa-gem"></i><span id="myKcnBalance">0.00000000</span></div>
+            <div class="balance-label" style="margin-top: 0.5rem; font-size: 0.8rem;">Reserved: <span id="myKcnReserved">0.00000000</span></div>
+        </div>
+        <div class="balance-item">
+            <div class="balance-label">LTC Price</div>
+            <div class="balance-value" style="color: var(--primary);">$<span id="ltcPriceInBalance">0.00</span></div>
+            <div class="balance-label" style="margin-top: 0.5rem; font-size: 0.8rem;">USD</div>
+        </div>
+    </div>
+
+    <!-- KCN Prices: Buy and Sell Cards (Compact) -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+        <!-- Buy KCN Card -->
+        <div style="background: var(--bg-card); border: 2px solid rgba(0, 217, 102, 0.5); border-radius: 8px; padding: 1rem; text-align: center;">
+            <div style="font-size: 1rem; color: #00d966; font-weight: bold; margin-bottom: 0.8rem;">Buy KCN</div>
+            <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.4rem;">
+                Low: <span style="color: var(--primary); font-weight: bold;">$<span id="lowestKcnBuyPrice">0.00</span></span> (<span id="lowestKcnBuyPriceLtc">0.00000000</span> LTC)
+            </div>
+            <div style="font-size: 0.85rem; color: var(--text-secondary);">
+                Avg: <span style="color: var(--primary); font-weight: bold;">$<span id="avgKcnBuyPrice">0.00</span></span> (<span id="avgKcnBuyPriceLtc">0.00000000</span> LTC)
+            </div>
+        </div>
+
+        <!-- Sell KCN Card -->
+        <div style="background: var(--bg-card); border: 2px solid rgba(255, 68, 68, 0.5); border-radius: 8px; padding: 1rem; text-align: center;">
+            <div style="font-size: 1rem; color: #ff4444; font-weight: bold; margin-bottom: 0.8rem;">Sell KCN</div>
+            <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.4rem;">
+                Low: <span style="color: var(--primary); font-weight: bold;">$<span id="lowestKcnSellPrice">0.00</span></span> (<span id="lowestKcnSellPriceLtc">0.00000000</span> LTC)
+            </div>
+            <div style="font-size: 0.85rem; color: var(--text-secondary);">
+                Avg: <span style="color: var(--primary); font-weight: bold;">$<span id="avgKcnSellPrice">0.00</span></span> (<span id="avgKcnSellPriceLtc">0.00000000</span> LTC)
+            </div>
+        </div>
+    </div>
+
+    <h2>Create a market order</h2>
+    <div class="card">
+        <div id="createTradeAlert"></div>
+
+        <!-- Buy/Sell Toggle Buttons -->
+        <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+            <button type="button" id="buyKcnBtn" style="flex: 1; padding: 1rem; background: linear-gradient(135deg, #00d966 0%, #00a84d 100%); color: #000; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 1rem; transition: all 0.3s ease;">
+                <i class="fas fa-arrow-up"></i> BUY KCN with LTC
+            </button>
+            <button type="button" id="sellKcnBtn" style="flex: 1; padding: 1rem; background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%); color: #fff; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 1rem; transition: all 0.3s ease;">
+                <i class="fas fa-arrow-down"></i> SELL KCN for LTC
+            </button>
+        </div>
+
+        <!-- Transaction Summary -->
+        <div id="transactionSummary" style="background: rgba(42, 214, 255, 0.1); border: 2px solid var(--border-color); border-radius: 6px; padding: 1.5rem; margin-bottom: 1.5rem; text-align: center;">
+            <div style="font-size: 1.2rem; color: var(--secondary); font-weight: bold; margin-bottom: 0.5rem;">I would like to</div>
+            <div style="font-size: 1.4rem; color: var(--primary); font-weight: bold;">Select Buy or Sell</div>
+            <div id="priceBreakdown" style="margin-top: 1rem; font-size: 0.95rem; color: var(--text-secondary);"></div>
+        </div>
+
+        <!-- Transaction Form -->
+        <form id="createTradeForm" style="display: none;">
+            <input type="hidden" id="sellingCoin">
+            <input type="hidden" id="buyingCoin">
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                    <label>Amount of KCN</label>
+                    <input type="number" id="kcnAmount" step="0.00000001" required>
+                </div>
+                <div class="form-group">
+                    <label>Amount of LTC</label>
+                    <input type="number" id="ltcAmount" step="0.00000001" required>
+                </div>
+                <div class="form-group">
+                    <label>USD Price</label>
+                    <input type="text" id="estimatedCostUsd" value="$0.00" readonly style="color: var(--primary); font-weight: bold;">
+                </div>
+                <div class="form-group">
+                    <label>PPC (USD)</label>
+                    <input type="text" id="pricePerCoinUsd" value="$0.00" readonly style="color: var(--secondary); font-weight: bold;">
+                </div>
+            </div>
+            <button type="button" onclick="showCreateModal()" class="btn btn-primary">Create Listing</button>
+        </form>
+        
+
+    </div>
+
+    <!-- Create Trade Confirmation Modal -->
+    <div id="createTradeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Confirm Trade</h2>
+                <button class="modal-close" onclick="closeCreateTradeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-warning">
+                    <strong>⚠️ Warning:</strong> You are creating a trade listing. Please verify the amounts and price before confirming.
+                </div>
+                <p id="createTradeMessage" class="modal-message"></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" onclick="closeCreateTradeModal()">Cancel</button>
+                <button class="btn btn-success" onclick="confirmCreateTrade()">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>

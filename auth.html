@@ -1,0 +1,52 @@
+<div id="auth" class="tab-content active">
+    <div class="hero">
+        <h1><i class="fas fa-exchange-alt"></i> Kernelcoin Exchange</h1>
+        <p>The place to trade your Kernelcoin for other crypto. It is <a href="https://github.com/kernelcoinproject/kernelcoin-exchange">vibe coded</a>, but hopefully not MtGox 2.0</p>
+    </div>
+
+    <div class="auth-forms-grid">
+        <!-- Register Form -->
+        <div class="card">
+            <h2 class="card-title">Register</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="regUsername">Username</label>
+                    <input type="text" id="regUsername" required>
+                </div>
+                <div class="form-group">
+                    <label for="regPassword">Password</label>
+                    <input type="password" id="regPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="regConfirmPassword">Confirm Password</label>
+                    <input type="password" id="regConfirmPassword" required>
+                </div>
+                <div class="form-group" id="regCaptchaGroup" style="display: none;">
+                    <label id="regCaptchaLabel" style="text-align: center; display: block;">Are you human?</label>
+                    <div id="regCaptchaContainer" class="captcha-container">
+                        <div class="captcha-loading">Loading captcha...</div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-secondary full-width">Register</button>
+                <div id="registerMessage" style="margin-top: 1rem; padding: 0.75rem; border-radius: 4px; text-align: center; font-weight: bold; display: none;"></div>
+            </form>
+        </div>
+        <!-- Login Form -->
+        <div class="card">
+            <h2 class="card-title">Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginUsername">Username</label>
+                    <input type="text" id="loginUsername" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary full-width">Login</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,115 @@
+.captcha-container {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background: #f9f9f9;
+    overflow: hidden;
+}
+
+.captcha-loading {
+    padding: 40px;
+    text-align: center;
+    color: #666;
+    font-style: italic;
+}
+
+.captcha-puzzle {
+    position: relative;
+    width: 300px;
+    height: 220px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: grab;
+    overflow: hidden;
+}
+
+.captcha-puzzle.dragging {
+    cursor: grabbing;
+}
+
+.captcha-tile {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: grab;
+    transition: transform 0.1s ease;
+    z-index: 10;
+}
+
+.captcha-tile.dragging {
+    cursor: grabbing;
+    transform: scale(1.05);
+    z-index: 20;
+}
+
+.captcha-tile:hover {
+    transform: scale(1.02);
+}
+
+.captcha-success {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(76, 175, 80, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    z-index: 30;
+}
+
+.captcha-error {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(244, 67, 54, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    z-index: 30;
+}
+
+.captcha-refresh {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 14px;
+    z-index: 25;
+}
+
+.captcha-refresh:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.captcha-instructions {
+    padding: 10px;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #555;
+    text-align: center;
+}
