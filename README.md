@@ -62,6 +62,7 @@ cd ~
 git clone https://github.com/kernelcoinproject/kernelcoin-exchange.git
 cd kernelcoin-exchange
 go mod tidy
+cd ~
 cat > start.sh << EOF
 go run *.go -electrum-binary=/home/ec2-user/electrum-ltc-4.2.2.1-x86_64.AppImage
 EOF
@@ -135,10 +136,11 @@ cat > /home/ec2-user/startup.sh << EOF
 tmux kill-session -t kce 2>/dev/null
 tmux new -s kce -d
 tmux neww -t kce -n kernelcoin
-tmux neww -t kce -n webwallet
+tmux neww -t kce -n electrum
+tmux neww -t kce -n kce
 tmux send-keys -t kce:kernelcoin "cd /home/ec2-user/kernelcoin && ./kernelcoind" C-m
 tmux send-keys -t kce:electrum "cd /home/ec2-user/ && ./electrum-ltc-4.2.2.1-x86_64.AppImage daemon" C-m
-tmux send-keys -t kce:kce "cd /home/ec2-user/kernelcoin-exchange && ./start.sh" C-m
+tmux send-keys -t kce:kce "cd /home/ec2-user/ && ./start.sh" C-m
 EOF
 chmod +x /home/ec2-user/startup.sh
 ```
